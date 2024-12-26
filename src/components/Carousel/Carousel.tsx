@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BuilderComponent } from '@builder.io/react';
 import Image from 'next/image';
 import styles from './Carousel.module.css';
 
@@ -25,6 +24,7 @@ const Carousel: React.FC<CarouselProps> = ({
   autoPlayInterval = 5000,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const slideCount = slides.length;
@@ -42,12 +42,14 @@ const Carousel: React.FC<CarouselProps> = ({
   }, [activeIndex, slideCount, autoPlayInterval]);
 
   const handleNext = () => {
+    setPrevIndex(activeIndex);
     setActiveIndex((prevIndex) =>
       prevIndex === slideCount - 1 ? 0 : prevIndex + 1
     );
   };
 
   const handleDotClick = (index: number) => {
+    setPrevIndex(activeIndex);
     setActiveIndex(index);
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
@@ -57,7 +59,10 @@ const Carousel: React.FC<CarouselProps> = ({
   }
 
   const currentSlide = slides[activeIndex];
-
+  const isForward =
+    (activeIndex > prevIndex && !(prevIndex === slideCount - 1 && activeIndex === 0)) ||
+    (activeIndex === 0 && prevIndex !== slideCount - 1);
+  console.log({ activeIndex, prevIndex, isForward });
   return (
     <div className={styles.CarouselContainer}>
       {/* Background Image and Overlay */}
@@ -74,7 +79,11 @@ const Carousel: React.FC<CarouselProps> = ({
         </div>
       )}
 
-      <div className={styles.contentContainer}>
+      <div
+        key={activeIndex}
+        className={`${styles.contentContainer} ${isForward ? styles.slideInRight : styles.slideInLeft
+          }`}
+      >
         {currentSlide.textContent && (
           <div
             className={`${styles.textContent} ${styles.builderContent}`}
@@ -101,7 +110,6 @@ const Carousel: React.FC<CarouselProps> = ({
           )}
         </div>
       </div>
-
       {slideCount > 1 && (
         <div className={styles.navDotsContainer}>
           {slides.map((_, index) => (
