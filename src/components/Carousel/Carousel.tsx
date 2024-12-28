@@ -62,7 +62,7 @@ const Carousel: React.FC<CarouselProps> = ({
   const isForward =
     (activeIndex > prevIndex && !(prevIndex === slideCount - 1 && activeIndex === 0)) ||
     (activeIndex === 0 && prevIndex !== slideCount - 1);
-  console.log({ activeIndex, prevIndex, isForward });
+
   return (
     <div className={styles.CarouselContainer}>
       {/* Background Image and Overlay */}

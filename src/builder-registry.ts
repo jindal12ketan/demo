@@ -1,6 +1,7 @@
 "use client";
-import { builder, Builder } from "@builder.io/react";
+import { builder, Builder, Content } from "@builder.io/react";
 import Carousel from "./components/Carousel/Carousel";
+import ContentAndImageCarousel from "./components/ContentAndImageCarousel/ContentAndImageCarousel";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -177,6 +178,45 @@ Builder.registerComponent(Carousel, {
       type: "number",
       helperText: "Time in ms between slides",
       defaultValue: 5000,
+    },
+  ],
+});
+
+Builder.registerComponent(ContentAndImageCarousel, {
+  name: "ContentAndImageCarousel",
+  inputs: [
+    {
+      name: "contents",
+      type: "list",
+      subFields: [
+        {
+          name: "textContent",
+          type: "richText",
+          required: true,
+          helperText: "Add formatted text content for this slide",
+        },
+      ],
+      required: true,
+    },
+    {
+      name: "headerContent",
+      type: "richText",
+      required: true,
+      helperText: "Add formatted text content for this slide",
+    },
+    {
+      name: "backgroundImage",
+      type: "file",
+      allowedFileTypes: ["jpeg", "jpg", "png", "webp"],
+      required: true,
+    },
+    {
+      name: "ctaButton",
+      type: "object",
+      subFields: [
+        { name: "label", type: "text" },
+        { name: "url", type: "url" },
+      ],
     },
   ],
 });

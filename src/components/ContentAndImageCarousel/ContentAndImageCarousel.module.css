@@ -1,0 +1,174 @@
+@media (min-width: 1220px) {
+  .ContentAndImageCarouselContainer {
+    height: 650px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Background Image */
+  .imageWrapper {
+    width: 45%;
+    z-index: 0;
+  }
+
+  .backgroundImage {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+    /* width: auto; */
+  }
+
+  .carouselContainer {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Content Container */
+  .contentContainer {
+    z-index: 0;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 600px) {
+  .contentContainer {
+    padding: 3rem 2rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 1220px) {
+  .ContentAndImageCarouselContainer {
+    display: block !important;
+    height: auto;
+    width: 100%;
+  }
+  .contentContainer {
+    z-index: 0;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  }
+}
+/* Header Content */
+.headerContent .p {
+  color: var(--primary, #006269) !important;
+}
+/* Sliding Right Left */
+.slideInRight {
+  transform: translateX(100%);
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+.slideInLeft {
+  transform: translateX(-100%);
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+/* Text Content */
+.textContentContainer {
+  margin-bottom: 5px; /* Adjust spacing between items */
+}
+
+.iconAndText {
+  display: flex;
+  align-items: flex-start; /* Align icon and text */
+  gap: 10px; /* Space between icon and text */
+}
+
+.checkIcon {
+  color: var(--accent-green); /* Use your green color */
+  font-size: 20px; /* Adjust icon size */
+  line-height: 1.5; /* Align icon vertically */
+}
+
+.textContent {
+  color: #333;
+  font-size: 16px; /* Adjust text size */
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--grey);
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* CTA Buttons */
+.ctaButtonWrapper {
+  text-align: center;
+}
+.ctaButton {
+  color: var(--accent-orange);
+  font-weight: var(--font-weight-semibold);
+}
+.ctaButton .a {
+  padding: 10px;
+  color: var(--accent-orange);
+}
+.ctaButton:hover {
+  background-color: rgba(255, 136, 0, 0.3);
+}
+
+/* Navigation Dots */
+.navDotsContainer {
+  margin-top: 2.5rem;
+  bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 20;
+}
+
+.navDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: #cccccc;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navDot:hover {
+  background: var(--primary, #006269);
+}
+
+.navDotActive {
+  background: var(--primary, #006269);
+}
+@keyframes slideIn {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.builderContent :global(p) {
+  color: #ffffff;
+  line-height: 1.4;
+}
+.builderContent :global(h1),
+.builderContent :global(h2),
+.builderContent :global(h3),
+.builderContent :global(h4),
+.builderContent :global(h5),
+.builderContent :global(h6) {
+  color: #ffffff;
+  font-weight: 700;
+}
