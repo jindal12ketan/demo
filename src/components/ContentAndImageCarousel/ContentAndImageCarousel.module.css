@@ -3,7 +3,7 @@
     height: 650px;
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   /* Background Image */
@@ -15,8 +15,8 @@
   .backgroundImage {
     display: flex;
     align-items: flex-end;
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     /* width: auto; */
   }
 
@@ -25,7 +25,6 @@
     width: 45%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   }
 
   /* Content Container */
@@ -34,6 +33,7 @@
     height: 100%;
     padding: 1rem;
     display: flex;
+    text-align: initial !important;
     flex-direction: column;
     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
   }
@@ -52,17 +52,22 @@
     height: auto;
     width: 100%;
   }
+  .carouselContainer {
+    padding: 1rem;
+  }
   .contentContainer {
     z-index: 0;
     height: 100%;
     padding: 1rem;
     display: flex;
+    text-align: initial !important;
     flex-direction: column;
     transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
   }
 }
+
 /* Header Content */
-.headerContent .p {
+.headerContent p{
   color: var(--primary, #006269) !important;
 }
 /* Sliding Right Left */
@@ -88,7 +93,7 @@
 }
 
 .checkIcon {
-  color: var(--accent-green); /* Use your green color */
+  color: var(--primary, #006269); /* Use your green color */
   font-size: 20px; /* Adjust icon size */
   line-height: 1.5; /* Align icon vertically */
 }
@@ -113,12 +118,12 @@
   color: var(--accent-orange);
   font-weight: var(--font-weight-semibold);
 }
-.ctaButton .a {
+.ctaButton a{
   padding: 10px;
   color: var(--accent-orange);
 }
-.ctaButton:hover {
-  background-color: rgba(255, 136, 0, 0.3);
+.ctaButton a:hover{
+  background-color: rgba(255, 136, 0, 0.1);
 }
 
 /* Navigation Dots */
@@ -128,7 +133,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
   z-index: 20;
 }
 
