@@ -2,6 +2,7 @@
 import { builder, Builder, Content } from "@builder.io/react";
 import Carousel from "./components/Carousel/Carousel";
 import ContentAndImageCarousel from "./components/ContentAndImageCarousel/ContentAndImageCarousel";
+import InteractiveHoverImageList from "./components/InteractiveHoverImageList/InteractiveHoverImageList";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -217,6 +218,65 @@ Builder.registerComponent(ContentAndImageCarousel, {
         { name: "label", type: "text" },
         { name: "url", type: "url" },
       ],
+    },
+  ],
+});
+
+Builder.registerComponent(InteractiveHoverImageList, {
+  name: "InteractiveHoverImageList",
+  inputs: [
+    {
+      name: "headerContent",
+      type: "richText",
+      required: true,
+      helperText: "Add formatted text content for this slide",
+    },
+    {
+      name: "description",
+      type: "richText",
+      required: true,
+      helperText: "Add formatted text content for this slide",
+    },
+    {
+      name: "tiles",
+      type: "list",
+      subFields: [
+        {
+          name: "image",
+          type: "file",
+          allowedFileTypes: ["jpeg", "jpg", "png", "webp"],
+          required: true,
+        },
+        {
+          name: "title",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "svgIcon",
+          type: "file",
+          allowedFileTypes: ["svg"],
+          required: true,
+        },
+        {
+          name: "ctaButton",
+          type: "object",
+          subFields: [
+            { name: "label", type: "text" },
+            { name: "url", type: "url" },
+          ],
+        },
+      ],
+      required: true,
+      options: {
+        customValidation: (value: any) => {
+          if (Array.isArray(value) && value.length > 4) {
+            return "You can only add up to 4 Tiles.";
+          }
+          return true;
+        },
+      },
+      helperText: "You can add up to 4 tiles for this list.",
     },
   ],
 });
