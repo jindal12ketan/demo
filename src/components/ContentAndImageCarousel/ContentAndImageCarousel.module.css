@@ -67,7 +67,7 @@
 }
 
 /* Header Content */
-.headerContent p{
+.headerContent p {
   color: var(--primary, #006269) !important;
 }
 /* Sliding Right Left */
@@ -118,11 +118,11 @@
   color: var(--accent-orange);
   font-weight: var(--font-weight-semibold);
 }
-.ctaButton a{
+.ctaButton a {
   padding: 10px;
   color: var(--accent-orange);
 }
-.ctaButton a:hover{
+.ctaButton a:hover {
   background-color: rgba(255, 136, 0, 0.1);
 }
 
