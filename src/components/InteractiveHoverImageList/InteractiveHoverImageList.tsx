@@ -44,12 +44,12 @@ const InteractiveHoverImageList: React.FC<InteractiveHoverImageListProps> = ({
           dangerouslySetInnerHTML={{ __html: description }}
         />
         <div className={styles.solutions}>
-          {tiles.map((tile) => {
+          {tiles.map((tile, index) => {
             return (
-              <a className={styles.tile} href={tile.ctaButton?.url} onMouseEnter={() => setActiveTileIndex(tileCount - tiles.length + tiles.indexOf(tile))}>
+              <a key={index} className={styles.tile} href={tile.ctaButton?.url} onMouseEnter={() => setActiveTileIndex(tileCount - tiles.length + tiles.indexOf(tile))}>
                 <img src={tile.svgIcon} alt={`${tile.title} icon`} className={styles.icon} />
                 <div className={styles.textWrapper}>
-                  <h3 className={styles.heading}>{tile.title}</h3>
+                  <p className={styles.heading}>{tile.title}</p>
                   <p className={styles.more}>Learn more</p>
                 </div>
               </a>
